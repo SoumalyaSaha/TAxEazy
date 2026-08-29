@@ -5,26 +5,41 @@ import DocumentsView from './components/DocumentsView'
 import ReturnsHistory from './components/ReturnsHistory'
 import Preferences from './components/Preferences'
 
-const NAV_ITEMS = [
-  { id: 'assistant', label: 'AI Assistant', icon: MessageSquare },
-  { id: 'documents', label: 'Documents', icon: FileText },
-  { id: 'returns', label: 'Returns', icon: History },
-  { id: 'preferences', label: 'Preferences', icon: Settings },
-]
+const NAV = {
+  en: [
+    { id: 'assistant', label: 'AI Assistant', icon: MessageSquare },
+    { id: 'documents', label: 'Documents', icon: FileText },
+    { id: 'returns', label: 'Returns', icon: History },
+    { id: 'preferences', label: 'Preferences', icon: Settings },
+  ],
+  hi: [
+    { id: 'assistant', label: 'AI सहायक', icon: MessageSquare },
+    { id: 'documents', label: 'दस्तावेज़', icon: FileText },
+    { id: 'returns', label: 'रिटर्न', icon: History },
+    { id: 'preferences', label: 'प्राथमिकताएं', icon: Settings },
+  ],
+}
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('assistant')
+  const [lang, setLang] = useState('en')
+
+  const navItems = NAV[lang]
 
   return (
     <div className="flex h-screen w-screen overflow-hidden bg-[#f9f9f9]">
       {/* Sidebar */}
       <aside className="w-64 h-full bg-navy text-white flex flex-col shrink-0">
         <div className="p-6 border-b border-white/10">
-          <h1 className="font-head text-xl font-bold tracking-tight">Tax Portal</h1>
-          <p className="text-[11px] text-white/50 mt-1 font-body">AI-Assisted ITR Filing</p>
+          <h1 className="font-head text-xl font-bold tracking-tight">
+            {lang === 'en' ? 'Tax Portal' : 'कर पोर्टल'}
+          </h1>
+          <p className="text-[11px] text-white/50 mt-1 font-body">
+            {lang === 'en' ? 'AI-Assisted ITR Filing' : 'AI-सहायता प्राप्त ITR दाखिल'}
+          </p>
         </div>
         <nav className="flex-1 py-4">
-          {NAV_ITEMS.map((item) => {
+          {navItems.map((item) => {
             const Icon = item.icon
             const active = activeTab === item.id
             return (
@@ -56,10 +71,10 @@ export default function App() {
 
       {/* Main Content */}
       <main className="flex-1 h-full overflow-hidden">
-        {activeTab === 'assistant' && <AIChatSection />}
-        {activeTab === 'documents' && <DocumentsView />}
-        {activeTab === 'returns' && <ReturnsHistory />}
-        {activeTab === 'preferences' && <Preferences />}
+        {activeTab === 'assistant' && <AIChatSection lang={lang} />}
+        {activeTab === 'documents' && <DocumentsView lang={lang} />}
+        {activeTab === 'returns' && <ReturnsHistory lang={lang} />}
+        {activeTab === 'preferences' && <Preferences lang={lang} setLang={setLang} />}
       </main>
     </div>
   )
