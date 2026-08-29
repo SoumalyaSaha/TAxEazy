@@ -41,7 +41,7 @@ export default function ReturnsHistory() {
                   {r.status === 'Verified' ? (
                     <Clock size={14} className="text-amber-500" />
                   ) : (
-                    <CheckCircle2 size={14} className="text-accent" />
+                    <CheckCircle size={14} className="text-accent" />
                   )}
                   <span className={`text-xs font-semibold ${r.status === 'Verified' ? 'text-amber-600' : 'text-accent'}`}>
                     {r.status}
