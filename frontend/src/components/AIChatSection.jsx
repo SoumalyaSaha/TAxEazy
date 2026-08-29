@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Send, Bot, User, Sparkles, Receipt } from 'lucide-react'
+import { Send, User, CheckCircle, FileText, MessageSquare } from 'lucide-react'
 
 const INITIAL_FORM = {
   fullName: 'Rahul Sharma',
@@ -78,7 +78,7 @@ export default function AIChatSection() {
       {/* Dark Chat Panel (Left) */}
       <div className="w-1/2 h-full bg-navy flex flex-col">
         <div className="px-6 py-4 border-b border-white/10 flex items-center gap-2">
-          <Bot size={20} className="text-accent" />
+          <MessageSquare size={20} className="text-accent" />
           <h2 className="font-head text-lg font-semibold text-white">AI Tax Assistant</h2>
         </div>
 
@@ -87,7 +87,7 @@ export default function AIChatSection() {
             <div key={i} className={`flex gap-3 ${msg.role === 'user' ? 'justify-end' : ''}`}>
               {msg.role === 'bot' && (
                 <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
-                  <Bot size={16} className="text-accent" />
+                  <MessageSquare size={16} className="text-accent" />
                 </div>
               )}
               <div
@@ -109,7 +109,7 @@ export default function AIChatSection() {
           {loading && (
             <div className="flex gap-3">
               <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
-                <Bot size={16} className="text-accent animate-pulse" />
+                <MessageSquare size={16} className="text-accent animate-pulse" />
               </div>
               <div className="bg-white/10 px-4 py-2 rounded-lg text-sm font-body text-white/70">
                 Calculating…
@@ -147,7 +147,7 @@ export default function AIChatSection() {
               <p className="text-xs font-body text-gray-400 mt-1">Income Tax Return — Verification</p>
             </div>
             <div className="flex items-center gap-1 text-accent">
-              <Sparkles size={16} />
+              <CheckCircle size={16} />
               <span className="text-xs font-body font-semibold">AI-Filled</span>
             </div>
           </div>
@@ -179,7 +179,7 @@ export default function AIChatSection() {
             </div>
 
             <div className="flex items-center gap-2 pt-3 border-t border-gray-100">
-              <Receipt size={16} className="text-gray-400" />
+              <FileText size={16} className="text-gray-400" />
               <span className="text-xs font-body text-gray-500">
                 Receipt Token: <span className="font-mono text-navy">{form.receiptToken}</span>
               </span>
