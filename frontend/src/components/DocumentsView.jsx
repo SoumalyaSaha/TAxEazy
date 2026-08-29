@@ -1,4 +1,4 @@
-import { FileCheck, Link2, BadgeCheck, CloudUpload } from 'lucide-react'
+import { FileCheck, BadgeCheck, CloudUpload } from 'lucide-react'
 
 export default function DocumentsView() {
   return (
